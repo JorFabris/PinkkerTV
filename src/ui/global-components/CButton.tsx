@@ -1,30 +1,34 @@
-import React, {ReactComponentElement} from 'react';
-import {TouchableOpacity, ViewStyle} from 'react-native';
-import {Colors} from '../../assets/Colors';
-import {View} from 'react-native';
+import React, { ReactComponentElement } from 'react';
+import { TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { Colors } from '../../assets/Colors';
+import { View } from 'react-native';
 
-interface IProps {
+interface IProps extends TouchableOpacityProps {
   backgroundColor?: string;
-  buttonContent: ReactComponentElement<any>;
+  buttonContent: React.ReactNode
   styles?: ViewStyle;
+  onPress: () => void;
 }
 
 const CButton = ({
   backgroundColor = Colors.mainColor,
   buttonContent,
+  onPress,
+  disabled,
   styles,
 }: IProps) => {
   return (
-    <View style={{...styles, flexDirection: 'row'}}>
+    <View style={{ ...styles, flexDirection: 'row' }}>
       <TouchableOpacity
+        disabled={disabled}
+        onPress={onPress}
         style={{
           height: 45,
           flex: 1,
-          backgroundColor,
+          backgroundColor: disabled ? Colors.mainLightColor : backgroundColor,
           borderRadius: 10,
           justifyContent: 'center',
           alignItems: 'center',
-          padding: 10,
         }}>
         {buttonContent}
       </TouchableOpacity>

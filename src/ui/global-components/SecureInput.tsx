@@ -1,57 +1,163 @@
-import React, {ReactComponentElement, useState} from 'react';
-import {TextInput, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {Colors} from '../../assets/Colors';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { ReactComponentElement, useEffect, useState } from 'react';
+import {
+  TextInput,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+  Animated,
+  TextInputProps,
+} from 'react-native';
+import { Colors } from '../../assets/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Fonts from '../../assets/Fonts';
+import { Text } from 'react-native';
+import FontSize from '../../assets/FontSize';
+import { NativeSyntheticEvent } from 'react-native';
+import { TextInputFocusEventData } from 'react-native';
 
-interface SecureInputsProps {
+interface SecureInputsProps extends TextInputProps {
   icon?: ReactComponentElement<any>;
   placeholder: string;
   styles?: ViewStyle;
-  type: 'PASSWORD' | 'DEFAULT';
+  name?: string;
+  isPassword?: boolean;
+  errors?: string;
+  label?: string;
+  validations?: Function[];
+  hasError?: string;
 }
 
-const SecureInput = ({placeholder, type, icon, styles}: SecureInputsProps) => {
-  const [focusColor, setFocusColor] = useState(Colors.mainLightColor);
+const SecureInput = ({
+  placeholder,
+  isPassword = false,
+  icon,
+  errors,
+  styles,
+  keyboardType,
+  value,
+  onBlur,
+  onChangeText,
+}: SecureInputsProps) => {
+  const [inputColor, setInputColor] = useState(Colors.mainLightColor);
   const [obscureText, setObscureText] = useState(true);
+  const [hasText, setHasText] = useState(false);
+  const [moveLabel] = useState(new Animated.Value(0));
+  const [fadeLabel] = useState(new Animated.Value(0));
+
+  const labelShown = () => {
+    Animated.timing(fadeLabel, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+
+    Animated.timing(moveLabel, {
+      toValue: -15,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+  const labelDisappear = () => {
+    Animated.timing(fadeLabel, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+
+    Animated.timing(moveLabel, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  useEffect(() => {
+    if (hasText) {
+      labelShown();
+    } else {
+      labelDisappear();
+    }
+  }, [hasText]);
+
+  useEffect(() => {
+    errors !== undefined ? setInputColor(Colors.errorColor) : setInputColor(Colors.mainColor)
+  }, [errors]);
 
   return (
-    <View
-      style={{
-        borderBottomWidth: 0.5,
-        padding: 3,
-        borderBottomColor: focusColor,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        ...styles,
-      }}>
-      {icon}
-      <TextInput
-        onFocus={() => setFocusColor(Colors.mainColor)}
-        onBlur={() => setFocusColor(Colors.mainLightColor)}
-        secureTextEntry={type === 'PASSWORD' && obscureText}
-        placeholder={placeholder}
-        placeholderTextColor={Colors.placeholderText}
+    <View style={{ marginVertical: 5, }}>
+      <View
         style={{
-          height: 40,
-          color: Colors.textColor,
-          flex: 1,
-          fontFamily: Fonts.REGULAR,
-          fontSize: 16,
-        }}
-      />
-      {type === 'PASSWORD' && (
-        <TouchableOpacity
-          onPress={() => setObscureText(!obscureText)}
-          activeOpacity={0.6}>
-          {obscureText ? (
-            <Icon name="eye" color={Colors.textColor} size={20} />
-          ) : (
-            <Icon name="eye-slash" color={Colors.textColor} size={20} />
-          )}
-        </TouchableOpacity>
-      )}
+          borderBottomWidth: 0.5,
+          padding: 3,
+          borderBottomColor: inputColor,
+
+          ...styles,
+        }}>
+        <View>
+          <Animated.View
+            style={{
+              transform: [{ translateY: moveLabel }],
+              opacity: fadeLabel,
+              position: 'absolute',
+            }}>
+            <Text
+              style={{
+                fontFamily: Fonts.REGULAR,
+                fontSize: FontSize.fontMin,
+                color: inputColor,
+                marginLeft: 30,
+              }}>
+              {placeholder}
+            </Text>
+          </Animated.View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            {icon}
+            <TextInput
+              value={value}
+              keyboardType={keyboardType}
+              onFocus={() => {
+                setInputColor(Colors.mainColor);
+              }}
+              onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+                setInputColor(Colors.mainLightColor);
+                onBlur!(e);
+              }}
+              placeholder={placeholder}
+              onChangeText={value => {
+                value.length > 0 ? setHasText(true) : setHasText(false);
+                onChangeText!(value);
+              }}
+              placeholderTextColor={Colors.placeholderText}
+              secureTextEntry={isPassword ? obscureText : false}
+              style={{
+                height: 40,
+                color: Colors.textColor,
+                flex: 1,
+                fontFamily: Fonts.REGULAR,
+                fontSize: 16,
+              }}
+            />
+            {isPassword && (
+              <TouchableOpacity
+                onPress={() => setObscureText(!obscureText)}
+                activeOpacity={0.6}>
+                {obscureText ? (
+                  <Icon name="eye" color={Colors.textColor} size={20} />
+                ) : (
+                  <Icon name="eye-slash" color={Colors.textColor} size={20} />
+                )}
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+      </View>
+      <Text style={{ fontFamily: Fonts.BOLD, fontSize: FontSize.fontBigMin, color: Colors.errorColor }}>{errors}</Text>
     </View>
   );
 };
