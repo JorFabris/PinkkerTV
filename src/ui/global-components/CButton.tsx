@@ -15,11 +15,13 @@ const CButton = ({
   buttonContent,
   onPress,
   disabled,
+  testID,
   styles,
 }: IProps) => {
   return (
     <View style={{ ...styles, flexDirection: 'row' }}>
       <TouchableOpacity
+        testID={testID}
         disabled={disabled}
         onPress={onPress}
         style={{

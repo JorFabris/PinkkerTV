@@ -31,6 +31,7 @@ interface SecureInputsProps extends TextInputProps {
 const SecureInput = ({
   placeholder,
   isPassword = false,
+  testID,
   icon,
   errors,
   styles,
@@ -119,6 +120,7 @@ const SecureInput = ({
             }}>
             {icon}
             <TextInput
+              testID={testID}
               value={value}
               keyboardType={keyboardType}
               onFocus={() => {

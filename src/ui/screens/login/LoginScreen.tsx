@@ -11,6 +11,8 @@ import { View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useFormik } from 'formik';
 import LoginValidationSchema from './utils/LoginValidationSchema';
+import { getText } from '../../../i18n/manageLocales';
+
 
 const Logo = require('../../../assets/image/pinkker.png');
 
@@ -21,11 +23,9 @@ const LoginScreen = ({ navigation }: IProps) => {
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', password: '' },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => navigation.navigate('Tabs'),
     validationSchema: LoginValidationSchema
   })
-
-
 
   return (
     <>
@@ -49,13 +49,14 @@ const LoginScreen = ({ navigation }: IProps) => {
             />
             { }
             <SecureInput
+              testID='LoginScreen.email'
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
               errors={errors['email']}
               value={values.email}
               name={'email'}
               styles={{ marginTop: 20 }}
-              placeholder="Email o usuario"
+              placeholder={getText().login.inputs.email}
               icon={
                 <Icon
                   name="envelope"
@@ -66,6 +67,7 @@ const LoginScreen = ({ navigation }: IProps) => {
               }
             />
             <SecureInput
+              testID='LoginScreen.password'
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
@@ -81,7 +83,7 @@ const LoginScreen = ({ navigation }: IProps) => {
                 />
               }
               isPassword={true}
-              placeholder="Contraseña"
+              placeholder={getText().login.inputs.password}
             />
 
             <View
@@ -97,12 +99,14 @@ const LoginScreen = ({ navigation }: IProps) => {
                     fontFamily: Fonts.REGULAR,
                     fontSize: FontSize.fontBigMedium,
                   }}>
-                  ¿Olvidaste tu contraseña?
+                  {getText().login.forgotPassword}
+
                 </Text>
               </TouchableOpacity>
             </View>
 
             <CButton
+              testID='LoginScreen.loginButton'
               onPress={handleSubmit}
               disabled={Object.entries(errors).length > 0}
               styles={{
@@ -115,7 +119,7 @@ const LoginScreen = ({ navigation }: IProps) => {
                     fontSize: FontSize.fontBigMedium,
                     color: Colors.textColor,
                   }}>
-                  Iniciar sesión
+                  {getText().login.button}
                 </Text>
               }
             />
@@ -135,7 +139,7 @@ const LoginScreen = ({ navigation }: IProps) => {
                   fontSize: FontSize.fontBigMedium,
                   color: Colors.textColor,
                 }}>
-                ¿No tenes cuenta? Registrate acá
+                {getText().login.register}
               </Text>
             </TouchableOpacity>
           </View>

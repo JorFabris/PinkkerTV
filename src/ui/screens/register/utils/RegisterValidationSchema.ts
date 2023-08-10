@@ -1,16 +1,20 @@
 import * as Yup from 'yup';
+import { getText } from '../../../../i18n/manageLocales';
 
 const RegisterValidationSchema = Yup.object().shape({
-    email: Yup.string().email('El email tiene que ser válido').required('El email o el usuario son requeridos'),
-    username: Yup.string().min(2, 'El usuario debe tener 2 o más caracteres').required('El usuario es requerido'),
-    birthday: Yup.date().required('La fecha de cumpleaños es requerida'),
-    password: Yup.string()
-    .min(8, 'La contraseña es invalida')
-    .required('La contraseña es requerida'),
-    rePassword:  Yup.string()
-    .required('La contraseña es requerida')
-    .oneOf([Yup.ref('password')], 'Las contraseñas no coinciden'),
-  });
+  email: Yup.string()
+    .email(getText().register.errors.email.valid)
+    .required(getText().register.errors.email.required),
+  username: Yup.string()
+    .min(2, getText().register.errors.username.min)
+    .required(getText().register.errors.username.required),
+  password: Yup.string()
+    .min(8, getText().register.errors.password.min)
+    .required(getText().register.errors.password.required),
+  rePassword: Yup.string()
+    .required(getText().register.errors.rePassword.required)
+    .oneOf([Yup.ref('password')], getText().register.errors.rePassword.coincidence),
+});
 
 
-  export default RegisterValidationSchema;
+export default RegisterValidationSchema;

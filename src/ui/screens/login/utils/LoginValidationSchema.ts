@@ -1,11 +1,14 @@
 import * as Yup from 'yup';
+import { getText } from '../../../../i18n/manageLocales';
 
 const LoginValidationSchema = Yup.object().shape({
-    email: Yup.string().email('El email tiene que ser válido').required('El email es necesario'),
-    password: Yup.string()
-      .min(8, 'La contraseña es invalida')
-      .required('La contraseña es necesaria')
-  });
+  email: Yup.string()
+    .email(getText().login.errors.email.valid)
+    .required(getText().login.errors.email.required),
+  password: Yup.string()
+    .min(8, getText().login.errors.password.min)
+    .required(getText().login.errors.password.required)
+});
 
 
-  export default LoginValidationSchema;
+export default LoginValidationSchema;

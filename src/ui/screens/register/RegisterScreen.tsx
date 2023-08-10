@@ -20,6 +20,7 @@ import CustomHeader from '../../global-components/CustomHeader/CustomHeader';
 import { StackNavigationProp } from '@react-navigation/stack';
 import RegisterValidationSchema from './utils/RegisterValidationSchema';
 import DateCustomInput from '../../global-components/DateCustomInput';
+import { getText } from '../../../i18n/manageLocales';
 
 
 interface IProps {
@@ -56,7 +57,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
               color: Colors.textColor,
               alignSelf: 'center',
             }}>
-            Registrate
+            {getText().register.header}
           </Text>
         }
       />
@@ -81,7 +82,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                 value={values.email}
                 name={'email'}
                 styles={{ marginTop: 20 }}
-                placeholder="Email o usuario"
+                placeholder={getText().register.inputs.email}
                 icon={
                   <Icon
                     name="envelope"
@@ -96,7 +97,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                 onBlur={handleBlur('username')}
                 name={'username'}
                 errors={errors['username']}
-                placeholder="Usuario"
+                placeholder={getText().register.inputs.username}
                 value={values.username}
                 icon={
                   <Icon
@@ -124,7 +125,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                   />
                 }
                 isPassword={true}
-                placeholder="Contraseña"
+                placeholder={getText().register.inputs.password}
               />
               <SecureInput
                 onChangeText={handleChange('rePassword')}
@@ -142,7 +143,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                   />
                 }
                 isPassword={true}
-                placeholder="Repetir contraseña"
+                placeholder={getText().register.inputs.rePassword}
               />
 
               <CButton
@@ -157,7 +158,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                       fontSize: FontSize.fontBigMedium,
                       color: Colors.textColor,
                     }}>
-                    Registrarme
+                    {getText().register.button}
                   </Text>
                 }
               />
