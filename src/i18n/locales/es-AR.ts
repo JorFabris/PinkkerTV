@@ -47,7 +47,12 @@ export default {
       }
     }
   },
-
+  tabs: {
+    following: 'Siguiendo',
+    discover: 'Descubrir',
+    browse: 'Explorar',
+    search: 'Buscar'
+  },
   home: {
 
   },

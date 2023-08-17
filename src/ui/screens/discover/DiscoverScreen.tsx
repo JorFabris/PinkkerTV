@@ -1,13 +1,13 @@
 import React from 'react'
 import { SafeAreaView, Text, View } from 'react-native';
 
-const HomeScreen = () => {
+const DiscoverScreen = () => {
 
 
     return (
         <SafeAreaView>
             <View>
-                <Text>HomeScreenView</Text>
+                <Text>DiscoverScreenView</Text>
             </View>
         </SafeAreaView>
     )
@@ -15,4 +15,4 @@ const HomeScreen = () => {
 }
 
 
-export default HomeScreen;
+export default DiscoverScreen;
