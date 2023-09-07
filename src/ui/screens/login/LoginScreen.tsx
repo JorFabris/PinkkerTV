@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
-import { Colors } from '../../../assets/Colors';
-import SecureInput from '../../global-components/SecureInput';
+import { Colors } from '@assets-colors';
+import SecureInput from '@global-components/SecureInput';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Image } from 'react-native';
-import CButton from '../../global-components/CButton';
-import Fonts from '../../../assets/Fonts';
-import FontSize from '../../../assets/FontSize';
+import CButton from '@global-components/CButton';
+import Fonts from '@fonts';
+import FontSize from '@fontSize';
 import { View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useFormik } from 'formik';
 import LoginValidationSchema from './utils/LoginValidationSchema';
-import { getText } from '../../../i18n/manageLocales';
+import { getText } from '@getTexts';
 
 
-const Logo = require('../../../assets/image/pinkker.png');
+const Logo = require('@assets-images/pinkker.png');
 
 interface IProps {
   navigation: StackNavigationProp<any, any>;
@@ -23,9 +23,9 @@ const LoginScreen = ({ navigation }: IProps) => {
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', password: '' },
-    onSubmit: (values) => navigation.navigate('Tabs'),
-    validationSchema: LoginValidationSchema
-  })
+    onSubmit: () => navigation.navigate('Tabs'),
+    validationSchema: LoginValidationSchema,
+  });
 
   return (
     <>
@@ -49,10 +49,10 @@ const LoginScreen = ({ navigation }: IProps) => {
             />
             { }
             <SecureInput
-              testID='LoginScreen.email'
+              testID="LoginScreen.email"
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
-              errors={errors['email']}
+              errors={errors.email}
               value={values.email}
               name={'email'}
               styles={{ marginTop: 20 }}
@@ -67,11 +67,11 @@ const LoginScreen = ({ navigation }: IProps) => {
               }
             />
             <SecureInput
-              testID='LoginScreen.password'
+              testID="LoginScreen.password"
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
-              errors={errors['password']}
+              errors={errors.password}
               name={'password'}
               styles={{ marginTop: 20 }}
               icon={
@@ -106,7 +106,7 @@ const LoginScreen = ({ navigation }: IProps) => {
             </View>
 
             <CButton
-              testID='LoginScreen.loginButton'
+              testID="LoginScreen.loginButton"
               onPress={handleSubmit}
               disabled={Object.entries(errors).length > 0}
               styles={{

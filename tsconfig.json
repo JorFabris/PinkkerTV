@@ -1,3 +1,19 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@global-components/*": ["src/ui/global-components/*"],
+      "@assets-images/*": ["src/assets/images/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@fontSize": ["src/assets/FontSize.ts"],
+      "@fonts": ["src/assets/Fonts.ts"],
+      "@assets-colors": ["src/assets/Colors.ts"],
+      "@rootStore": ["src/RootStore.ts"],
+      "@getTexts": ["src/i18n/manageLocales.ts"],
+      "@services/*": ["src/services/*"],
+      "*": ["src/*"] // esta siempre al final como la última opción
+    },
+  }
 }

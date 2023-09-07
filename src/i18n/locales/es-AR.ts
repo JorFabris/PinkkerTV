@@ -54,6 +54,10 @@ export default {
     search: 'Buscar'
   },
   home: {
-
+    turnOn: 'Prender',
+    title: 'Tus canales en vivo'
+  },
+  search: {
+    placeholder: 'Buscar...'
   },
 };
