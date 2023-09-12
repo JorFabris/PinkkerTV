@@ -17,7 +17,7 @@ export default class Logger {
         }
     };
 
-    static warn(message: string, ...args: any) {
+    static warn = (message: string, ...args: any) => {
         if (__DEV__) {
             Reactotron.display({
                 name: 'WARN',
@@ -26,9 +26,9 @@ export default class Logger {
                 important: true,
             });
         }
-    }
+    };
 
-    static error(message: string, report: any) {
+    static error = (message: string, report: any) => {
         if (__DEV__) {
             Reactotron.display({
                 name: 'ERROR',
@@ -37,5 +37,5 @@ export default class Logger {
                 important: true,
             });
         }
-    }
+    };
 }
