@@ -17,7 +17,6 @@ const useStreams = () => {
     const getLiveStreams = async () => {
         try {
             const streamsList = await getStreams();
-            console.log(streamsList);
 
             setStreams(streamsList.streams);
         } catch (error) {

@@ -7,6 +7,7 @@ import {
   ViewStyle,
   Animated,
   TextInputProps,
+  Platform,
 } from 'react-native';
 import { Colors } from '../../assets/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -82,11 +83,11 @@ const SecureInput = ({
   }, [hasText]);
 
   useEffect(() => {
-    errors !== undefined ? setInputColor(Colors.errorColor) : setInputColor(Colors.mainColor)
+    errors !== undefined ? setInputColor(Colors.errorColor) : setInputColor(Colors.mainColor);
   }, [errors]);
 
   return (
-    <View style={{ marginVertical: 5, }}>
+    <View style={{ marginVertical: 5 }}>
       <View
         style={{
           borderBottomWidth: 0.5,
@@ -131,14 +132,14 @@ const SecureInput = ({
                 onBlur!(e);
               }}
               placeholder={placeholder}
-              onChangeText={value => {
-                value.length > 0 ? setHasText(true) : setHasText(false);
-                onChangeText!(value);
+              onChangeText={val => {
+                val.length > 0 ? setHasText(true) : setHasText(false);
+                onChangeText!(val);
               }}
               placeholderTextColor={Colors.placeholderText}
               secureTextEntry={isPassword ? obscureText : false}
               style={{
-                height: 40,
+                height: Platform.OS === 'ios' ? 40 : 45,
                 color: Colors.textColor,
                 flex: 1,
                 fontFamily: Fonts.REGULAR,
