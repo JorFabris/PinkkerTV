@@ -13,6 +13,7 @@
       "@rootStore": ["src/RootStore.ts"],
       "@getTexts": ["src/i18n/manageLocales.ts"],
       "@services/*": ["src/services/*"],
+      "@utils/*" : ["src/utils/*"],
       "*": ["src/*"] // esta siempre al final como la última opción
     },
   }
