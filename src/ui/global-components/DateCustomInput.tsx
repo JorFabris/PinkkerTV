@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Text, TextInput, View } from "react-native"
-import { Colors } from "../../assets/Colors"
-import Fonts from "../../assets/Fonts"
-import FontSize from "../../assets/FontSize"
+import React, { useEffect, useRef, useState } from 'react';
+import { Text, TextInput, View } from 'react-native';
+import { Colors } from '../../assets/Colors';
+import Fonts from '../../assets/Fonts';
+import FontSize from '../../assets/FontSize';
 
 
 
@@ -22,27 +22,28 @@ const DateCustomInput = () => {
 
     useEffect(() => {
         if (day.length > -1 && (Number(day) > 31 || Number(day) < 0)) {
-            setDay('')
-            return
+            setDay('');
+            return;
         }
         if (day.length === 2) {
             refMonth.current!.focus();
         }
         if (month.length > -1 && (Number(month) > 12 || Number(month) < 0)) {
-            setMonth('')
-            return
+            setMonth('');
+            return;
         }
         if (day.length === 2 && month.length === 2) {
             refYear.current!.focus();
         }
 
         if (year.length > 3 && (Number(year) > minYear || Number(year) < 1900)) {
-            setYear('')
-            return
+            setYear('');
+            return;
         }
 
 
-    }, [day, month, year])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [day, month, year]);
 
     return (
         <View>
@@ -52,10 +53,10 @@ const DateCustomInput = () => {
                 alignItems: 'center',
                 height: 50,
                 // width: '100%',
-                justifyContent: 'space-evenly'
+                justifyContent: 'space-evenly',
             }}>
                 <TextInput
-                    placeholder='DD'
+                    placeholder="DD"
                     placeholderTextColor={Colors.placeholderText}
                     maxLength={2}
                     value={day}
@@ -72,7 +73,7 @@ const DateCustomInput = () => {
                     }} onChangeText={(text) => setDay(text)} />
                 <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontTitle }}>/</Text>
                 <TextInput
-                    placeholder='MM'
+                    placeholder="MM"
                     placeholderTextColor={Colors.placeholderText}
                     maxLength={2}
                     value={month}
@@ -89,7 +90,7 @@ const DateCustomInput = () => {
                     }} onChangeText={(text) => setMonth(text)} />
                 <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontTitle }}>/</Text>
                 <TextInput
-                    placeholder='YYYY'
+                    placeholder="YYYY"
                     ref={refYear}
                     value={year}
                     placeholderTextColor={Colors.placeholderText}
@@ -106,8 +107,8 @@ const DateCustomInput = () => {
                     }} onChangeText={(text) => setYear(text)} />
             </View>
         </View>
-    )
-}
+    );
+};
 
 
 export default DateCustomInput;

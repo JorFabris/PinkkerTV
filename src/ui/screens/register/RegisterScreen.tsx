@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -31,12 +30,9 @@ const RegisterScreen = ({ navigation }: IProps) => {
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', username: '', birthDate: '', password: '', rePassword: '' },
-    onSubmit: (values) => console.log(values),
-    validationSchema: RegisterValidationSchema
-  })
-
-
-
+    onSubmit: (form) => console.log(form),
+    validationSchema: RegisterValidationSchema,
+  });
 
   return (
     <>
@@ -78,7 +74,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
               <SecureInput
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
-                errors={errors['email']}
+                errors={errors.email}
                 value={values.email}
                 name={'email'}
                 styles={{ marginTop: 20 }}
@@ -96,7 +92,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                 onChangeText={handleChange('username')}
                 onBlur={handleBlur('username')}
                 name={'username'}
-                errors={errors['username']}
+                errors={errors.username}
                 placeholder={getText().register.inputs.username}
                 value={values.username}
                 icon={
@@ -113,7 +109,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
                 value={values.password}
-                errors={errors['password']}
+                errors={errors.password}
                 name={'password'}
                 styles={{ marginTop: 20 }}
                 icon={
@@ -131,7 +127,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
                 onChangeText={handleChange('rePassword')}
                 onBlur={handleBlur('rePassword')}
                 value={values.rePassword}
-                errors={errors['rePassword']}
+                errors={errors.rePassword}
                 name={'rePassword'}
                 styles={{ marginTop: 20 }}
                 icon={
