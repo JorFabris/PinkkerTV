@@ -1,21 +1,25 @@
+
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../ui/screens/login/LoginScreen';
-import RegisterScreen from '../ui/screens/register/RegisterScreen';
 import TabNavigation from './TabNavigation';
+import NotificationsScreen from '@screens/notifications/NotificationScreen';
+import RegisterScreen from '@screens/register/RegisterScreen';
+import LoginScreen from '@screens/login/LoginScreen';
+import InboxScreen from '@screens/inbox/InboxScreen';
+import Screens from '../Screens';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
+
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-      initialRouteName="LoginScreen">
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-      <Stack.Screen name="Tabs" component={TabNavigation} />
+      initialRouteName={Screens.Stack.LoginScreen}>
+      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.LoginScreen} component={LoginScreen} />
+      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.RegisterScreen} component={RegisterScreen} />
+      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.Tabs} component={TabNavigation} />
+      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.NotificationsScreen} component={NotificationsScreen} />
+      <Stack.Screen name={Screens.Stack.InboxScreen} component={InboxScreen} />
     </Stack.Navigator>
   );
 };

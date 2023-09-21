@@ -11,6 +11,7 @@ module.exports = {
           '@assets-images': './src/assets/images',
           '@navigation': './src/navigation',
           '@fontSize': './src/assets/FontSize.ts',
+          '@screens': './src/ui/screens',
           '@fonts': './src/assets/Fonts.ts',
           '@assets-colors': './src/assets/Colors.ts',
           '@rootStore': './src/RootStore.ts',

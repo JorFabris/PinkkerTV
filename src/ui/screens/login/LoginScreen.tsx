@@ -132,7 +132,7 @@ const LoginScreen = ({ navigation }: IProps) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <TouchableOpacity onPress={() => navigation.push('RegisterScreen')}>
+            <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
               <Text
                 style={{
                   fontFamily: Fonts.REGULAR,

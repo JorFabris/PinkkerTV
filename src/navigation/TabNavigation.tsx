@@ -1,150 +1,58 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import FollowingScreen from '../ui/screens/following/FollowingScreen';
-import DiscoverScreen from '../ui/screens/discover/DiscoverScreen';
-import BrowseScreen from '../ui/screens/browse/BrowseScreen';
-import SearchScreen from '../ui/screens/search/SearchScreen';
+import Screens from '../Screens';
+import FollowingScreen from '@screens/following/FollowingScreen';
+import BrowseScreen from '@screens/browse/BrowseScreen';
+import DiscoverScreen from '@screens/discover/DiscoverScreen';
+import SearchScreen from '@screens/search/SearchScreen';
 import { getText } from '../i18n/manageLocales';
 import { Colors } from '../assets/Colors';
-import { Platform, SafeAreaView, StatusBar, StatusBarStyle, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native';
 import Fonts from '../assets/Fonts';
 import FontSize from '../assets/FontSize';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import IconMaterialDesign from 'react-native-vector-icons/MaterialCommunityIcons';
-import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-export const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 55 : 28;
-
+import Header from '@global-components/Header';
+import SearchHeader from '@global-components/SearchHeader';
 
 const Tab = createBottomTabNavigator();
-
 
 const TABS = [
     {
         label: getText().tabs.following,
-        name: 'FollowingScreen',
+        name: Screens.Tabs.FollowingScreen,
         children: FollowingScreen,
         activeIcon: 'heart',
+        header: <Header title={getText().tabs.following} />,
     },
     {
         label: getText().tabs.discover,
-        name: 'DiscoverScreen',
+        name: Screens.Tabs.DiscoverScreen,
         children: DiscoverScreen,
         activeIcon: 'compass',
+        header: <Header title={getText().tabs.discover} />,
     },
     {
         label: getText().tabs.browse,
-        name: 'BrowseScreen',
+        name: Screens.Tabs.BrowseScreen,
         children: BrowseScreen,
         activeIcon: 'layer-group',
+        header: <Header title={getText().tabs.browse} />,
     },
     {
         label: getText().tabs.search,
-        name: 'SearchScreen',
+        name: Screens.Tabs.SearchScreen,
         children: SearchScreen,
         activeIcon: 'search',
+        header: <SearchHeader />,
     },
 ];
-
-const Header = ({ title }: { title: string }) => {
-    return (
-        <View >
-            <View
-                style={{ height: STATUSBAR_HEIGHT, backgroundColor: Colors.componentsColor }}>
-                <StatusBar
-                    translucent
-                    barStyle={Colors.statusBar as StatusBarStyle}
-                    backgroundColor={Colors.componentsColor}
-                />
-            </View>
-            <SafeAreaView style={{ backgroundColor: Colors.componentsColor }}>
-                <View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 10 }}>
-                        <TouchableOpacity
-                            activeOpacity={0.71}
-                            style={[styles.btnIcon, { backgroundColor: Colors.mainColor }]}
-                        >
-                            <Icon name="user" color={Colors.textColor} size={20} />
-                        </TouchableOpacity>
-                        <View style={{ flex: 1 }} />
-                        <TouchableOpacity
-                            activeOpacity={0.71}
-                            style={styles.btnIcon}
-                        >
-                            <Icon name="comments" color={Colors.textColor} size={20} />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            activeOpacity={0.71}
-                            style={styles.btnIcon}
-                        >
-                            <Icon name="inbox" color={Colors.textColor} size={20} />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            activeOpacity={0.71}
-                            style={styles.btnTurnOn}
-                        >
-                            <IconMaterialDesign name="broadcast" color={Colors.textColor} size={20} />
-                            <Text style={styles.textTurnOn}>{getText().home.turnOn}</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={{ margin: 10, fontFamily: Fonts.BLACK, color: Colors.textColor, fontSize: FontSize.thirtyTwo }}>
-                        {title}
-                    </Text>
-                </View>
-            </SafeAreaView>
-        </View>
-    );
-};
-
-const SearchHeader = () => {
-    const navigation = useNavigation();
-    return (
-        <View style={{ backgroundColor: Colors.componentsColor }}>
-            <View
-                style={{ height: STATUSBAR_HEIGHT, backgroundColor: Colors.componentsColor }}>
-                <StatusBar
-                    translucent
-                    barStyle={Colors.statusBar as StatusBarStyle}
-                    backgroundColor={Colors.componentsColor}
-                />
-            </View>
-            <SafeAreaView>
-                <View style={{ flexDirection: 'row', padding: 15, alignItems: 'center' }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Icon name="chevron-left" size={20} color={Colors.textColor} />
-                    </TouchableOpacity>
-
-                    <TextInput
-                        placeholder={getText().search.placeholder}
-                        placeholderTextColor={Colors.placeholderText}
-                        style={styles.searchInput}
-                    />
-
-                </View>
-
-            </SafeAreaView>
-
-        </View>
-    );
-};
 
 
 const TabNavigation = () => {
     return (
         <Tab.Navigator
-            screenOptions={{
-                headerShown: true,
-                header: ({ route }) => {
-
-                    if (route.name !== 'SearchScreen') {
-                        return (<Header title={route?.params?.title} />);
-                    }
-                    return (<SearchHeader />);
-                },
-            }
-            }
-            initialRouteName="FollowingScreen">
+            initialRouteName={Screens.Tabs.FollowingScreen}>
             {TABS.map((tab, i) => (
                 <Tab.Screen
                     key={`TAB-${i}`}
@@ -155,7 +63,7 @@ const TabNavigation = () => {
                         tabBarActiveTintColor: Colors.mainColor,
                         tabBarInactiveBackgroundColor: Colors.screenColor,
                         tabBarActiveBackgroundColor: Colors.screenColor,
-
+                        header: () => tab.header,
                         tabBarLabel: ({ color }) => (<Text style={{
                             color: color,
                             fontFamily: Fonts.MEDIUM,
@@ -177,36 +85,5 @@ const TabNavigation = () => {
         </Tab.Navigator>
     );
 };
-
-const styles = StyleSheet.create({
-    btnIcon: {
-        padding: 9,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 25,
-    },
-    btnTurnOn: {
-        backgroundColor: Colors.white_40,
-        padding: 6,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 25,
-    },
-    textTurnOn: {
-        color: Colors.textColor,
-        fontFamily: Fonts.REGULAR,
-        fontSize: FontSize.fontBigMin,
-        marginLeft: 5,
-    },
-    searchInput: {
-        fontFamily: Fonts.MEDIUM,
-        fontSize: FontSize.fontBigMedium,
-        color: Colors.textColor,
-        flex: 1,
-        height: Platform.OS === 'ios' ? 30 : 45,
-        marginLeft: 10,
-    },
-});
 
 export default TabNavigation;
