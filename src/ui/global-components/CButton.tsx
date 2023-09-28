@@ -1,4 +1,4 @@
-import React, { ReactComponentElement } from 'react';
+import React from 'react';
 import { TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
 import { Colors } from '../../assets/Colors';
 import { View } from 'react-native';

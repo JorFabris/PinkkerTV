@@ -1,31 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import {
   Keyboard,
   SafeAreaView,
-  StyleSheet,
   Text,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { Colors } from '../../../assets/Colors';
-import SecureInput from '../../global-components/SecureInput';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Fonts from '../../../assets/Fonts';
-import FontSize from '../../../assets/FontSize';
 import { useFormik } from 'formik';
-import CButton from '../../global-components/CButton';
-import CustomHeader from '../../global-components/CustomHeader/CustomHeader';
 import { StackNavigationProp } from '@react-navigation/stack';
-import RegisterValidationSchema from './utils/RegisterValidationSchema';
-import DateCustomInput from '../../global-components/DateCustomInput';
-import { getText } from '../../../i18n/manageLocales';
-
+import { Colors } from '@assets-colors';
+import CButton from '@global-components/CButton';
+import DateCustomInput from '@global-components/DateCustomInput';
+import { getText } from '@getTexts';
+import FontSize from '@fontSize';
+import Fonts from '@fonts';
+import SecureInput from '@global-components/SecureInput';
+import RegisterValidationSchema from '@screens/register/utils/RegisterValidationSchema';
 
 interface IProps {
   navigation: StackNavigationProp<any, any>;
 }
-const RegisterScreen = ({ navigation }: IProps) => {
+const RegisterScreen = ({ }: IProps) => {
 
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
@@ -36,27 +32,7 @@ const RegisterScreen = ({ navigation }: IProps) => {
 
   return (
     <>
-      <CustomHeader
-        backgroundColor={Colors.componentsColor}
-        startSlot={
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}>
-            <Icon name="chevron-left" size={25} color={Colors.textColor} />
-          </TouchableOpacity>
-        }
-        title={
-          <Text
-            style={{
-              fontFamily: Fonts.BOLD,
-              fontSize: FontSize.fontTitle,
-              color: Colors.textColor,
-              alignSelf: 'center',
-            }}>
-            {getText().register.header}
-          </Text>
-        }
-      />
+
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
           style={{
@@ -166,12 +142,5 @@ const RegisterScreen = ({ navigation }: IProps) => {
 
   );
 };
-
-const styles = StyleSheet.create({
-  backButton: {
-    position: 'absolute',
-    left: 15,
-  },
-});
 
 export default RegisterScreen;
