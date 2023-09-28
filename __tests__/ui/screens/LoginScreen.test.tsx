@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, RenderAPI } from '@testing-library/react-native';
+import { render, RenderAPI } from '@testing-library/react-native';
 import LoginScreen from '../../../src/ui/screens/login/LoginScreen';
 import mockNavigation from '../../mocks/NavigationMocks';
 import { getText } from '../../../src/i18n/manageLocales';
@@ -17,7 +17,7 @@ describe('LoginScreen:', () => {
 
 
     it('Shows LoginScreen ok', () => {
-        const { getByText } = screen
+        const { getByText } = screen;
         expect(getByText(getText().login.forgotPassword)).toBeTruthy();
     });
-})
+});

@@ -7,7 +7,7 @@ const LoginValidationSchema = Yup.object().shape({
     .required(getText().login.errors.email.required),
   password: Yup.string()
     .min(8, getText().login.errors.password.min)
-    .required(getText().login.errors.password.required)
+    .required(getText().login.errors.password.required),
 });
 
 

@@ -1,5 +1,5 @@
 import { by, device, expect, element } from 'detox';
-import { getText } from "../../src/i18n/manageLocales";
+import { getText } from '../../src/i18n/manageLocales';
 
 
 describe('LoginScreen', () => {

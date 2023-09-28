@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 
 const DiscoverScreen = () => {
@@ -10,9 +10,9 @@ const DiscoverScreen = () => {
                 <Text>DiscoverScreenView</Text>
             </View>
         </SafeAreaView>
-    )
+    );
 
-}
+};
 
 
 export default DiscoverScreen;

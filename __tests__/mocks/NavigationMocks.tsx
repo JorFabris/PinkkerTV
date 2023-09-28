@@ -18,8 +18,8 @@ const mockNavigation: StackNavigationProp<any, any> = {
     reset: jest.fn(),
     setOptions: jest.fn(),
     setParams: jest.fn(),
-}
+};
 
 
 
-export default mockNavigation
+export default mockNavigation;
