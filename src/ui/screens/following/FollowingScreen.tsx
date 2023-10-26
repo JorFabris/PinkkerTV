@@ -6,7 +6,7 @@ import Fonts from '@fonts';
 import useStreams from './hooks/useStreams';
 import { getText } from '@getTexts';
 import { ActivityIndicator } from 'react-native';
-import StreamItem from './components/StreamItem';
+import StreamItem from '@global-components/StreamItem';
 
 
 const FollowingScreen = () => {

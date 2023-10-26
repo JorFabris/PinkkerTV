@@ -6,10 +6,11 @@ module.exports = {
       'module-resolver',
       {
         alias: {
-          '*': 'src/*',
+          '@': 'src/*',
           '@global-components': './src/ui/global-components',
           '@assets-images': './src/assets/images',
           '@navigation': './src/navigation',
+          '@interfaces': './src/interfaces',
           '@fontSize': './src/assets/FontSize.ts',
           '@screens': './src/ui/screens',
           '@fonts': './src/assets/Fonts.ts',

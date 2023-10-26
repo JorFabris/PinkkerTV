@@ -2,7 +2,6 @@ import Reactotron from 'reactotron-react-native';
 
 export default class Logger {
     static log = (message = 'Log', ...args: any) => {
-        console.log(typeof message);
 
         if (typeof message !== 'string') {
             throw new Error('Message has to be a string');

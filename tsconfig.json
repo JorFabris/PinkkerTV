@@ -8,6 +8,7 @@
       "@global-components/*": ["src/ui/global-components/*"],
       "@assets-images/*": ["src/assets/images/*"],
       "@navigation/*": ["src/navigation/*"],
+      "@interfaces/*": ["src/interfaces/*"],
       "@screens/*": ["src/ui/screens/*"],
       "@fontSize": ["src/assets/FontSize.ts"],
       "@fonts": ["src/assets/Fonts.ts"],
@@ -16,7 +17,7 @@
       "@getTexts": ["src/i18n/manageLocales.ts"],
       "@services/*": ["src/services/*"],
       "@utils/*" : ["src/utils/*"],
-      "*": ["src/*"] // esta siempre al final como la última opción
+      "@": ["src/*"] // esta siempre al final como la última opción
     },
   }
 }

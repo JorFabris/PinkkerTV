@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Streams } from 'interfaces/GlobalInterfaces';
+import { Streams } from '@interfaces/GlobalInterfaces';
 import { Colors } from '@assets-colors';
 import Fonts from '@fonts';
 import FontSize from '@fontSize';
@@ -9,16 +9,19 @@ const emptyBanner = require('@assets-images/emptyBanner.png');
 const iconPinkker = require('@assets-images/icon_pinkker.png');
 
 interface IProps {
-    stream: Streams
+    stream: Streams;
+    key: any;
 }
 
-const StreamItem = ({ stream }: IProps) => {
+const StreamItem = ({ stream, key }: IProps) => {
+    console.log(key);
+
     return (
         <TouchableOpacity style={{
             flexDirection: 'row',
             alignItems: 'center',
             marginVertical: 10,
-        }} activeOpacity={0.89} onPress={() => { }}>
+        }} activeOpacity={0.89} key={key} onPress={() => { }}>
             <Image source={emptyBanner} style={styles.bannerImage} />
             <View style={{ marginLeft: 5 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -33,7 +36,7 @@ const StreamItem = ({ stream }: IProps) => {
 };
 
 const styles = StyleSheet.create({
-    bannerImage: { height: 85, width: 145, borderRadius: 5 },
+    bannerImage: { height: 85, width: 145 },
     streamerNickname: { color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontBigMedium, marginLeft: 5 },
     streamTitle: { color: Colors.textColor, fontFamily: Fonts.REGULAR, fontSize: FontSize.fontBigMedium },
     streamCategory: { color: Colors.textColor, fontFamily: Fonts.REGULAR, fontSize: FontSize.fontSubTitle },
