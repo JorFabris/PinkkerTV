@@ -3,6 +3,7 @@ import { Text, TextInput, View } from 'react-native';
 import { Colors } from '../../assets/Colors';
 import Fonts from '../../assets/Fonts';
 import FontSize from '../../assets/FontSize';
+import { getText } from '../../i18n/manageLocales';
 
 
 
@@ -47,7 +48,7 @@ const DateCustomInput = () => {
 
     return (
         <View>
-            <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontBigMedium }}>Fecha de nacimiento</Text>
+            <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontBigMedium }}>{getText().register.inputs.birthday}</Text>
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',

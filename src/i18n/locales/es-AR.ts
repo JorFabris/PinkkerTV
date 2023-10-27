@@ -60,6 +60,15 @@ export default {
   search: {
     placeholder: 'Buscar...',
   },
+  discover: {
+    categories: {
+      games: 'Juegos',
+      irl: 'IRL',
+      esports: 'Esports',
+      music: 'Musica',
+      creative: 'Creatividad',
+    },
+  },
   inbox: {
     title: 'Susurros',
   },

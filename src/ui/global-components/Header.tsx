@@ -57,7 +57,7 @@ const Header = ({ title }: { title: string }) => {
                             <Text style={styles.textTurnOn}>{getText().home.turnOn}</Text>
                         </TouchableOpacity>
                     </View>
-                    <Text style={{ margin: 10, fontFamily: Fonts.BLACK, color: Colors.textColor, fontSize: FontSize.thirtyTwo }}>
+                    <Text style={{ marginHorizontal: 10, marginVertical: 5, fontFamily: Fonts.BLACK, color: Colors.textColor, fontSize: FontSize.thirtyTwo }}>
                         {title}
                     </Text>
                 </View>

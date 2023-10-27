@@ -10,17 +10,16 @@ const iconPinkker = require('@assets-images/icon_pinkker.png');
 
 interface IProps {
     stream: Streams;
-    key: any;
+    key: React.Key
 }
 
 const StreamItem = ({ stream, key }: IProps) => {
-    console.log(key);
-
     return (
         <TouchableOpacity style={{
             flexDirection: 'row',
             alignItems: 'center',
             marginVertical: 10,
+            marginHorizontal: 10,
         }} activeOpacity={0.89} key={key} onPress={() => { }}>
             <Image source={emptyBanner} style={styles.bannerImage} />
             <View style={{ marginLeft: 5 }}>

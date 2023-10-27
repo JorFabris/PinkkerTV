@@ -15,6 +15,7 @@ module.exports = {
           '@screens': './src/ui/screens',
           '@fonts': './src/assets/Fonts.ts',
           '@assets-colors': './src/assets/Colors.ts',
+          '@assets': './src/assets',
           '@rootStore': './src/RootStore.ts',
           '@getTexts': './src/i18n/manageLocales.ts',
           '@services': './src/services',
