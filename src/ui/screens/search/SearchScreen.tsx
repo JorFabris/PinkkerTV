@@ -1,14 +1,13 @@
+import AvailableSoon from '@global-components/AvailableSoon';
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 const SearchScreen = () => {
 
 
     return (
-        <SafeAreaView>
-            <View>
-                <Text>SearchScreenView</Text>
-            </View>
+        <SafeAreaView style={{ flex: 1 }}>
+            <AvailableSoon />
         </SafeAreaView>
     );
 

@@ -60,6 +60,12 @@ export default {
   search: {
     placeholder: 'Buscar...',
   },
+  explore: {
+    selectors: {
+      categories: 'Categorías',
+      live: 'En vivo',
+    },
+  },
   discover: {
     categories: {
       games: 'Juegos',
@@ -71,8 +77,11 @@ export default {
   },
   inbox: {
     title: 'Susurros',
+    emptyState: 'No tenes susurros todavía',
   },
   notifications: {
     title: 'Notificaciones',
+    emptyState: 'No tenes notificaciones todavía',
+
   },
 };

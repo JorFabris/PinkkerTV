@@ -3,7 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Screens from '../Screens';
 import FollowingScreen from '@screens/following/FollowingScreen';
-import BrowseScreen from '@screens/browse/BrowseScreen';
+import BrowseScreen from '@screens/explore/ExploreScreen';
 import DiscoverScreen from '@screens/discover/DiscoverScreen';
 import SearchScreen from '@screens/search/SearchScreen';
 import { getText } from '../i18n/manageLocales';

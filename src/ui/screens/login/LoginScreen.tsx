@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }: IProps) => {
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', password: '' },
-    onSubmit: () => navigation.navigate('Tabs'),
+    onSubmit: () => navigation.replace('Tabs'),
     validationSchema: LoginValidationSchema,
   });
 
