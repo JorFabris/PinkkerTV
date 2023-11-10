@@ -22,7 +22,7 @@ interface IProps {
 const LoginScreen = ({ navigation }: IProps) => {
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
-    initialValues: { email: '', password: '' },
+    initialValues: { username: '', password: '' },
     onSubmit: () => navigation.replace('Tabs'),
     validationSchema: LoginValidationSchema,
   });
@@ -49,14 +49,14 @@ const LoginScreen = ({ navigation }: IProps) => {
             />
             { }
             <SecureInput
-              testID="LoginScreen.email"
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              errors={errors.email}
-              value={values.email}
-              name={'email'}
+              testID="LoginScreen.username"
+              onChangeText={handleChange('username')}
+              onBlur={handleBlur('username')}
+              errors={errors.username}
+              value={values.username}
+              name={'username'}
               styles={{ marginTop: 20 }}
-              placeholder={getText().login.inputs.email}
+              placeholder={getText().login.inputs.username}
               icon={
                 <Icon
                   name="envelope"

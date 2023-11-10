@@ -2,9 +2,9 @@ import * as Yup from 'yup';
 import { getText } from '../../../../i18n/manageLocales';
 
 const LoginValidationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email(getText().login.errors.email.valid)
-    .required(getText().login.errors.email.required),
+  username: Yup.string()
+    .min(6, getText().login.errors.username.valid)
+    .required(getText().login.errors.username.required),
   password: Yup.string()
     .min(8, getText().login.errors.password.min)
     .required(getText().login.errors.password.required),
