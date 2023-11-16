@@ -1,16 +1,16 @@
 export default {
   login: {
     inputs: {
-      username: 'Usuario',
+      email: 'Correo electronico',
       password: 'Contraseña',
     },
     button: 'Iniciar sesión',
     forgotPassword: '¿Olvidaste tu contraseña?',
     register: '¿No tenes cuenta? Registrate acá',
     errors: {
-      username: {
-        valid: 'El usuario tiene que ser válido',
-        required: 'El usuario es necesario',
+      email: {
+        valid: 'El email tiene que ser válido',
+        required: 'El email es necesario',
       },
       password: {
         min: 'La contraseña es invalida',
