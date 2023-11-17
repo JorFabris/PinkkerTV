@@ -1,7 +1,7 @@
 
 import { Colors } from '@assets-colors';
 import StreamItem from '@global-components/StreamItem';
-import useStreams from '@screens/following/hooks/useStreams';
+import useStreams from '@screens/Home/following/hooks/useStreams';
 import React from 'react';
 import { ActivityIndicator, FlatList, View } from 'react-native';
 

@@ -2,10 +2,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Screens from '../../Screens';
-import FollowingScreen from '@screens/following/FollowingScreen';
-import BrowseScreen from '@screens/explore/ExploreScreen';
-import DiscoverScreen from '@screens/discover/DiscoverScreen';
-import SearchScreen from '@screens/search/SearchScreen';
+import FollowingScreen from '@screens/Home/following/FollowingScreen';
+import BrowseScreen from '@screens/Home/explore/ExploreScreen';
+import DiscoverScreen from '@screens/Home/discover/DiscoverScreen';
+import SearchScreen from '@screens/Home/search/SearchScreen';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Header from '@navigation/HomeNavigation/components/Header';

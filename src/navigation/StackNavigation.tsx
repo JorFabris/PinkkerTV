@@ -3,10 +3,10 @@
 import React from 'react';
 import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
 import HomeNavigation from './HomeNavigation/HomeNavigation';
-import NotificationsScreen from '@screens/notifications/NotificationScreen';
+import NotificationsScreen from '@screens/Home/notifications/NotificationScreen';
 import RegisterScreen from '@screens/register/RegisterScreen';
 import LoginScreen from '@screens/login/LoginScreen';
-import InboxScreen from '@screens/inbox/InboxScreen';
+import InboxScreen from '@screens/Home/inbox/InboxScreen';
 import Screens from '../Screens';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import CustomHeader from '@global-components/CustomHeader/CustomHeader';

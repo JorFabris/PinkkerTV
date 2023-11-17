@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Streams } from '../../../../interfaces/GlobalInterfaces';
-import { getStreams } from '../../../../services/StreamsService';
+import { Streams } from '../../../../../interfaces/GlobalInterfaces';
+import { getStreams } from '../../../../../services/StreamsService';
 
 
 
