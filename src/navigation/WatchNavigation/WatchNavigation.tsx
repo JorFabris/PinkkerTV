@@ -8,8 +8,8 @@ import DiscoverScreen from '@screens/Home/discover/DiscoverScreen';
 import SearchScreen from '@screens/Home/search/SearchScreen';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Header from '@navigation/HomeNavigation/components/Header';
-import SearchHeader from '@navigation/HomeNavigation/components/SearchHeader';
+import Header from '@navigation/WatchNavigation/components/Header';
+import SearchHeader from '@navigation/WatchNavigation/components/SearchHeader';
 import Fonts from '@fonts';
 import { getText } from '@getTexts';
 import { Colors } from '@assets-colors';
@@ -49,7 +49,7 @@ const TABS = [
 ];
 
 
-const HomeNavigation = () => {
+const WatchNavigation = () => {
     return (
         <Tab.Navigator
             initialRouteName={Screens.Home.FollowingScreen}>
@@ -86,4 +86,4 @@ const HomeNavigation = () => {
     );
 };
 
-export default HomeNavigation;
+export default WatchNavigation;

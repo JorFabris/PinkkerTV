@@ -53,7 +53,7 @@ const Header = ({ title }: { title: string }) => {
                             activeOpacity={0.71}
                             style={styles.btnTurnOn}
                         >
-                            <IconMaterialDesign name="broadcast" color={Colors.textColor} size={20} />
+                            <IconMaterialDesign name="broadcast" color={Colors.white} size={20} />
                             <Text style={styles.textTurnOn}>{getText().home.turnOn}</Text>
                         </TouchableOpacity>
                     </View>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
     },
     btnTurnOn: {
-        backgroundColor: Colors.white_40,
+        backgroundColor: Colors.warmGrey,
         padding: 6,
         flexDirection: 'row',
         justifyContent: 'center',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
     },
     textTurnOn: {
-        color: Colors.textColor,
+        color: Colors.white,
         fontFamily: Fonts.REGULAR,
         fontSize: FontSize.fontBigMin,
         marginLeft: 5,
