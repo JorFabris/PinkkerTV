@@ -10,7 +10,7 @@ const InboxScreen = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: Colors.screenColor, justifyContent: 'center', alignItems: 'center' }} >
-            <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontTwentyTwo }}>{getText().inbox.emptyState}</Text>
+            <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontTwentyTwo }}>{getText().watch.inbox.emptyState}</Text>
         </View>
     );
 };

@@ -28,7 +28,7 @@ const SearchHeader = () => {
                     </TouchableOpacity>
 
                     <TextInput
-                        placeholder={getText().search.placeholder}
+                        placeholder={getText().watch.search.placeholder}
                         placeholderTextColor={Colors.placeholderText}
                         style={styles.searchInput}
                     />

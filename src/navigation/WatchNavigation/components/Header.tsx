@@ -54,7 +54,7 @@ const Header = ({ title }: { title: string }) => {
                             style={styles.btnTurnOn}
                         >
                             <IconMaterialDesign name="broadcast" color={Colors.white} size={20} />
-                            <Text style={styles.textTurnOn}>{getText().home.turnOn}</Text>
+                            <Text style={styles.textTurnOn}>{getText().watch.home.turnOn}</Text>
                         </TouchableOpacity>
                     </View>
                     <Text style={{ marginHorizontal: 10, marginVertical: 5, fontFamily: Fonts.BLACK, color: Colors.textColor, fontSize: FontSize.thirtyTwo }}>

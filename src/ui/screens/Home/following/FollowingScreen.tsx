@@ -34,7 +34,7 @@ const FollowingScreen = () => {
                     fontSize: FontSize.twenty,
                     marginLeft: 10,
                 }}>
-                    {getText().home.title}
+                    {getText().watch.home.title}
                 </Text>
                 <FlatList
                     style={{ flex: 1, margin: 5 }}

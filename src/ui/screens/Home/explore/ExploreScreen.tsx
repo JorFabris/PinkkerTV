@@ -15,12 +15,12 @@ type TypeSelectors = {
 
 const SELECTORS: TypeSelectors[] = [
     {
-        title: getText().explore.selectors.categories,
+        title: getText().watch.explore.selectors.categories,
         open: true,
         children: <Categories />,
     },
     {
-        title: getText().explore.selectors.live,
+        title: getText().watch.explore.selectors.live,
         open: false,
         children: <LiveChannels />,
     },
