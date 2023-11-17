@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
-import TabNavigation from './TabNavigation';
+import HomeNavigation from './HomeNavigation/HomeNavigation';
 import NotificationsScreen from '@screens/notifications/NotificationScreen';
 import RegisterScreen from '@screens/register/RegisterScreen';
 import LoginScreen from '@screens/login/LoginScreen';
@@ -107,7 +107,7 @@ const StackNavigation = () => {
       initialRouteName={Screens.Stack.LoginScreen}>
       <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.LoginScreen} component={LoginScreen} />
       <Stack.Screen options={{ header: () => (<RegisterHeader />) }} name={Screens.Stack.RegisterScreen} component={RegisterScreen} />
-      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.Tabs} component={TabNavigation} />
+      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.HomeNavigation} component={HomeNavigation} />
       <Stack.Screen options={{ header: () => (<NotificationsHeader />) }} name={Screens.Stack.NotificationsScreen} component={NotificationsScreen} />
       <Stack.Screen options={{
         header: () => (<InboxHeader />),

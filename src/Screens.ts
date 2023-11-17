@@ -1,5 +1,5 @@
 export default {
-    Tabs: {
+    Home: {
         FollowingScreen: 'FollowingScreen',
         DiscoverScreen: 'DiscoverScreen',
         BrowseScreen: 'BrowseScreen',
@@ -8,7 +8,7 @@ export default {
     Stack: {
         LoginScreen: 'LoginScreen',
         RegisterScreen: 'RegisterScreen',
-        Tabs: 'Tabs',
+        HomeNavigation: 'HomeNavigation',
         NotificationsScreen: 'NotificationsScreen',
         InboxScreen: 'InboxScreen',
     },

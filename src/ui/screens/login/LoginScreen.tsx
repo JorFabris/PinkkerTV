@@ -12,6 +12,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useFormik } from 'formik';
 import LoginValidationSchema from './utils/LoginValidationSchema';
 import { getText } from '@getTexts';
+import Screens from '../../../Screens';
 
 
 const Logo = require('@assets-images/pinkker.png');
@@ -23,7 +24,7 @@ const LoginScreen = ({ navigation }: IProps) => {
 
   const { handleChange, handleBlur, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', password: '' },
-    onSubmit: () => navigation.replace('Tabs'),
+    onSubmit: () => navigation.replace(Screens.Stack.HomeNavigation),
     validationSchema: LoginValidationSchema,
   });
 
@@ -132,7 +133,7 @@ const LoginScreen = ({ navigation }: IProps) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+            <TouchableOpacity onPress={() => navigation.navigate(Screens.Stack.RegisterScreen)}>
               <Text
                 style={{
                   fontFamily: Fonts.REGULAR,

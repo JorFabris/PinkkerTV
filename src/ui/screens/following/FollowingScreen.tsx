@@ -39,7 +39,7 @@ const FollowingScreen = () => {
                 <FlatList
                     style={{ flex: 1, margin: 5 }}
                     data={streams}
-                    renderItem={({ item: stream, index }) => <StreamItem key={`StreamItem-${index}`} stream={stream} />}
+                    renderItem={({ item: stream, index }) => <StreamItem key={`StreamItem-following-${index}`} stream={stream} />}
                 />
 
             </View>

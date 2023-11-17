@@ -3,7 +3,7 @@ import { SafeAreaView, StatusBar, TouchableOpacity, View, Platform, StyleSheet, 
 import { Colors } from '@assets-colors';
 import FontSize from '@fontSize';
 import Fonts from '@fonts';
-import Screens from '../../Screens';
+import Screens from '../../../Screens';
 import { getText } from '@getTexts';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
