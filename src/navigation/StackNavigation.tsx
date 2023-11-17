@@ -3,10 +3,10 @@
 import React from 'react';
 import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
 import WatchNavigation from './WatchNavigation/WatchNavigation';
-import NotificationsScreen from '@screens/Home/notifications/NotificationScreen';
+import NotificationsScreen from '@screens/Watch/notifications/NotificationScreen';
 import RegisterScreen from '@screens/register/RegisterScreen';
 import LoginScreen from '@screens/login/LoginScreen';
-import InboxScreen from '@screens/Home/inbox/InboxScreen';
+import InboxScreen from '@screens/Watch/inbox/InboxScreen';
 import Screens from '../Screens';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import CustomHeader from '@global-components/CustomHeader/CustomHeader';
@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 import Fonts from '@fonts';
 import FontSize from '@fontSize';
 import { getText } from '@getTexts';
+import GoLiveNavigation from './GoLiveNavigation/GoLiveNavigation';
 
 const Stack = createStackNavigator();
 
@@ -41,7 +42,7 @@ const StackNavigation = () => {
               color: Colors.textColor,
               marginHorizontal: 15,
             }}>
-            {getText().inbox.title}
+            {getText().watch.inbox.title}
           </Text>
         }
       />
@@ -95,7 +96,7 @@ const StackNavigation = () => {
               color: Colors.textColor,
               marginHorizontal: 15,
             }}>
-            {getText().notifications.title}
+            {getText().watch.notifications.title}
           </Text>
         }
       />
@@ -112,6 +113,7 @@ const StackNavigation = () => {
       <Stack.Screen options={{
         header: () => (<InboxHeader />),
       }} name={Screens.Stack.InboxScreen} component={InboxScreen} />
+      <Stack.Screen options={{ headerShown: false }} component={GoLiveNavigation} name={'GoLiveNavigation'} />
     </Stack.Navigator>
   );
 };

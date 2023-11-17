@@ -10,18 +10,41 @@ import Fonts from '@fonts';
 import { getText } from '@getTexts';
 import { Colors } from '@assets-colors';
 import FontSize from '@fontSize';
+import HomeScreen from '@screens/GoLive/HomeScreen';
+import ContentScreen from '@screens/GoLive/ContentScreen';
+import AnalitycsScreen from '@screens/GoLive/AnalitycsScreen';
 
 const Tab = createBottomTabNavigator();
 
-const TABS: any[] = [
-
+const TABS = [
+    {
+        label: getText().goLive.home.title,
+        name: Screens.GoLive.HomeScreen,
+        children: HomeScreen,
+        activeIcon: 'home',
+        // header: <Header title={getText().watch.tabs.following} />,
+    },
+    {
+        label: getText().goLive.tabs.content,
+        name: Screens.GoLive.ContentScreen,
+        children: ContentScreen,
+        activeIcon: 'film',
+        // header: <Header title={getText().watch.tabs.discover} />,
+    },
+    {
+        label: getText().goLive.tabs.analitycs,
+        name: Screens.GoLive.AnalitycsScreen,
+        children: AnalitycsScreen,
+        activeIcon: 'chart-bar',
+        // header: <Header title={getText().watch.tabs.browse} />,
+    },
 ];
 
 
 const GoLiveNavigation = () => {
     return (
         <Tab.Navigator
-            initialRouteName={Screens.Home.FollowingScreen}>
+            initialRouteName={Screens.GoLive.HomeScreen}>
             {TABS.map((tab, i) => (
                 <Tab.Screen
                     key={`TAB-${i}`}
@@ -32,7 +55,7 @@ const GoLiveNavigation = () => {
                         tabBarActiveTintColor: Colors.mainColor,
                         tabBarInactiveBackgroundColor: Colors.screenColor,
                         tabBarActiveBackgroundColor: Colors.screenColor,
-                        header: () => tab.header,
+                        // header: () => tab.header,
                         tabBarLabel: ({ color }) => (<Text style={{
                             color: color,
                             fontFamily: Fonts.MEDIUM,

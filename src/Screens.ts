@@ -1,9 +1,14 @@
 export default {
-    Home: {
+    Watch: {
         FollowingScreen: 'FollowingScreen',
         DiscoverScreen: 'DiscoverScreen',
         BrowseScreen: 'BrowseScreen',
         SearchScreen: 'SearchScreen',
+    },
+    GoLive: {
+        HomeScreen: 'HomeScreen',
+        ContentScreen: 'ContentScreen',
+        AnalitycsScreen: 'AnalitycsScreen',
     },
     Stack: {
         LoginScreen: 'LoginScreen',

@@ -14,6 +14,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const Header = ({ title }: { title: string }) => {
     const navigation = useNavigation<BottomTabNavigationProp<any, any>>();
+
+    const handelGoLive = () => {
+        navigation.navigate('GoLiveNavigation');
+    };
+
     return (
         <View>
             <View
@@ -50,6 +55,7 @@ const Header = ({ title }: { title: string }) => {
                             <Icon name="comments" solid color={Colors.textColor} size={20} />
                         </TouchableOpacity>
                         <TouchableOpacity
+                            onPress={handelGoLive}
                             activeOpacity={0.71}
                             style={styles.btnTurnOn}
                         >

@@ -2,10 +2,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Screens from '../../Screens';
-import FollowingScreen from '@screens/Home/following/FollowingScreen';
-import BrowseScreen from '@screens/Home/explore/ExploreScreen';
-import DiscoverScreen from '@screens/Home/discover/DiscoverScreen';
-import SearchScreen from '@screens/Home/search/SearchScreen';
+import FollowingScreen from '@screens/Watch/following/FollowingScreen';
+import BrowseScreen from '@screens/Watch/explore/ExploreScreen';
+import DiscoverScreen from '@screens/Watch/discover/DiscoverScreen';
+import SearchScreen from '@screens/Watch/search/SearchScreen';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Header from '@navigation/WatchNavigation/components/Header';
@@ -19,29 +19,29 @@ const Tab = createBottomTabNavigator();
 
 const TABS = [
     {
-        label: getText().tabs.following,
-        name: Screens.Home.FollowingScreen,
+        label: getText().watch.tabs.following,
+        name: Screens.Watch.FollowingScreen,
         children: FollowingScreen,
         activeIcon: 'heart',
-        header: <Header title={getText().tabs.following} />,
+        header: <Header title={getText().watch.tabs.following} />,
     },
     {
-        label: getText().tabs.discover,
-        name: Screens.Home.DiscoverScreen,
+        label: getText().watch.tabs.discover,
+        name: Screens.Watch.DiscoverScreen,
         children: DiscoverScreen,
         activeIcon: 'compass',
-        header: <Header title={getText().tabs.discover} />,
+        header: <Header title={getText().watch.tabs.discover} />,
     },
     {
-        label: getText().tabs.browse,
-        name: Screens.Home.BrowseScreen,
+        label: getText().watch.tabs.browse,
+        name: Screens.Watch.BrowseScreen,
         children: BrowseScreen,
         activeIcon: 'layer-group',
-        header: <Header title={getText().tabs.browse} />,
+        header: <Header title={getText().watch.tabs.browse} />,
     },
     {
-        label: getText().tabs.search,
-        name: Screens.Home.SearchScreen,
+        label: getText().watch.tabs.search,
+        name: Screens.Watch.SearchScreen,
         children: SearchScreen,
         activeIcon: 'search',
         header: <SearchHeader />,
@@ -52,7 +52,7 @@ const TABS = [
 const WatchNavigation = () => {
     return (
         <Tab.Navigator
-            initialRouteName={Screens.Home.FollowingScreen}>
+            initialRouteName={Screens.Watch.FollowingScreen}>
             {TABS.map((tab, i) => (
                 <Tab.Screen
                     key={`TAB-${i}`}
