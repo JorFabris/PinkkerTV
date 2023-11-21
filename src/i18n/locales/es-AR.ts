@@ -95,6 +95,10 @@ export default {
     home: {
       title: 'Inicio',
       online: 'En vivo',
+      stream: 'Stream',
+      duration: 'Duración',
+      viewers: 'Viewers',
+      followers: 'Seguidores',
       offline: 'Sin conexión',
       streamManager: 'Gestor de vivo',
       editStreamInfo: 'Editar info del vivo',
@@ -102,6 +106,10 @@ export default {
       emptyStateTitle: 'Esta calmo. Muy calmo...',
       emptyStateSubtitle: 'Te mostraremos tus nuevos seguidores, Subs, cheers, Raids y tu actividad aquí.',
       seeAllActivity: 'Ver toda la actividad',
+      FAButton: {
+        on: 'Prender',
+        off: 'Apagar',
+      },
     },
     content: {
       title: 'Contenido',

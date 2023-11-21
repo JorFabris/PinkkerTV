@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
+    "ios:clean": "cd ios && rm -rf Pods && pod install && cd ..",
     "android:clean": "cd android && ./gradlew clean && cd ..",
     "detox:build-ios": "detox build --configuration ios.sim.debug",
     "detox:ios": "detox test --configuration ios.sim.debug --all"
