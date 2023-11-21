@@ -13,8 +13,9 @@ export default {
     Stack: {
         LoginScreen: 'LoginScreen',
         RegisterScreen: 'RegisterScreen',
-        HomeNavigation: 'HomeNavigation',
+        WatchNavigation: 'WatchNavigation',
         NotificationsScreen: 'NotificationsScreen',
         InboxScreen: 'InboxScreen',
+        GoLiveNavigation: 'GoLiveNavigation',
     },
 };

@@ -88,12 +88,13 @@ export default {
 
   goLive: {
     tabs: {
-      Home: 'Inicio',
+      home: 'Inicio',
       content: 'Contenido',
       analitycs: 'Analiticas',
     },
     home: {
       title: 'Inicio',
+      watch: 'Mirar',
       online: 'En vivo',
       stream: 'Stream',
       duration: 'Duración',

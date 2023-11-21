@@ -16,7 +16,7 @@ const Header = ({ title }: { title: string }) => {
     const navigation = useNavigation<BottomTabNavigationProp<any, any>>();
 
     const handelGoLive = () => {
-        navigation.navigate(Screens.Stack.GoLiveNavigation);
+        navigation.navigate('WatchNavigation');
     };
 
     return (
@@ -59,8 +59,8 @@ const Header = ({ title }: { title: string }) => {
                             activeOpacity={0.71}
                             style={styles.btnTurnOn}
                         >
-                            <IconMaterialDesign name="broadcast" color={Colors.white} size={20} />
-                            <Text style={styles.textTurnOn}>{getText().watch.home.turnOn}</Text>
+                            <IconMaterialDesign name="eye" color={Colors.white} size={20} />
+                            <Text style={styles.textTurnOn}>{getText().goLive.home.watch}</Text>
                         </TouchableOpacity>
                     </View>
                     <Text style={{ marginHorizontal: 10, marginVertical: 5, fontFamily: Fonts.BLACK, color: Colors.textColor, fontSize: FontSize.thirtyTwo }}>

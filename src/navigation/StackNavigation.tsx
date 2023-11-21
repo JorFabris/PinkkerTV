@@ -108,12 +108,12 @@ const StackNavigation = () => {
       initialRouteName={Screens.Stack.LoginScreen}>
       <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.LoginScreen} component={LoginScreen} />
       <Stack.Screen options={{ header: () => (<RegisterHeader />) }} name={Screens.Stack.RegisterScreen} component={RegisterScreen} />
-      <Stack.Screen options={{ headerShown: false }} name={Screens.Stack.HomeNavigation} component={WatchNavigation} />
+      <Stack.Screen options={{ headerShown: false }} component={WatchNavigation} name={Screens.Stack.WatchNavigation} />
       <Stack.Screen options={{ header: () => (<NotificationsHeader />) }} name={Screens.Stack.NotificationsScreen} component={NotificationsScreen} />
       <Stack.Screen options={{
         header: () => (<InboxHeader />),
       }} name={Screens.Stack.InboxScreen} component={InboxScreen} />
-      <Stack.Screen options={{ headerShown: false }} component={GoLiveNavigation} name={'GoLiveNavigation'} />
+      <Stack.Screen options={{ headerShown: false }} component={GoLiveNavigation} name={Screens.Stack.GoLiveNavigation} />
     </Stack.Navigator>
   );
 };
