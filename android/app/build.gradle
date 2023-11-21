@@ -81,8 +81,8 @@ android {
         applicationId "com.pinkkertv"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
-        versionName "0.0.1"
+        versionCode 6
+        versionName "0.0.2"
     }
     signingConfigs {
         debug {
