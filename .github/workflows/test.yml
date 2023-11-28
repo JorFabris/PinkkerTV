@@ -1,0 +1,14 @@
+name: 'UNITARY TESTS'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: 'RUNNING TESTS'
+        run: |
+          'yarn test'
