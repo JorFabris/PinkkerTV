@@ -36,6 +36,7 @@ const SecureInput = ({
   icon,
   errors,
   styles,
+  name,
   keyboardType,
   value,
   onBlur,
@@ -160,7 +161,7 @@ const SecureInput = ({
           </View>
         </View>
       </View>
-      <Text style={{ fontFamily: Fonts.BOLD, fontSize: FontSize.fontBigMin, color: Colors.errorColor }}>{errors}</Text>
+      <Text testID={`SecureInput.error-${name}`} style={{ fontFamily: Fonts.BOLD, fontSize: FontSize.fontBigMin, color: Colors.errorColor }}>{errors}</Text>
     </View>
   );
 };

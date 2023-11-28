@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Colors } from '../../assets/Colors';
 import Fonts from '../../assets/Fonts';
 import FontSize from '../../assets/FontSize';
@@ -41,8 +41,6 @@ const DateCustomInput = () => {
             setYear('');
             return;
         }
-
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [day, month, year]);
 
@@ -53,63 +51,55 @@ const DateCustomInput = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 height: 50,
-                // width: '100%',
                 justifyContent: 'space-evenly',
             }}>
                 <TextInput
                     placeholder="DD"
                     placeholderTextColor={Colors.placeholderText}
+                    keyboardType="number-pad"
                     maxLength={2}
                     value={day}
                     ref={refDay}
-                    style={{
-                        height: 40,
-                        textAlign: 'center',
-                        width: 60,
-                        color: Colors.textColor,
-                        fontFamily: Fonts.BOLD,
-                        fontSize: FontSize.seventeen,
-                        borderBottomWidth: 0.5,
-                        borderBottomColor: Colors.mainColor,
-                    }} onChangeText={(text) => setDay(text)} />
+                    style={styles.input}
+                    onChangeText={(text) => setDay(text)} />
                 <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontTitle }}>/</Text>
                 <TextInput
                     placeholder="MM"
                     placeholderTextColor={Colors.placeholderText}
+                    keyboardType="number-pad"
                     maxLength={2}
                     value={month}
                     ref={refMonth}
-                    style={{
-                        height: 40,
-                        textAlign: 'center',
-                        width: 60,
-                        color: Colors.textColor,
-                        fontFamily: Fonts.BOLD,
-                        fontSize: FontSize.seventeen,
-                        borderBottomWidth: 0.5,
-                        borderBottomColor: Colors.mainColor,
-                    }} onChangeText={(text) => setMonth(text)} />
+                    style={styles.input}
+                    onChangeText={(text) => setMonth(text)} />
                 <Text style={{ color: Colors.textColor, fontFamily: Fonts.BOLD, fontSize: FontSize.fontTitle }}>/</Text>
                 <TextInput
                     placeholder="YYYY"
                     ref={refYear}
                     value={year}
                     placeholderTextColor={Colors.placeholderText}
+                    keyboardType="number-pad"
                     maxLength={4}
-                    style={{
-                        height: 40,
-                        textAlign: 'center',
-                        width: 60,
-                        color: Colors.textColor,
-                        fontFamily: Fonts.BOLD,
-                        fontSize: FontSize.seventeen,
-                        borderBottomWidth: 0.5,
-                        borderBottomColor: Colors.mainColor,
-                    }} onChangeText={(text) => setYear(text)} />
+                    style={styles.input}
+                    onChangeText={(text) => setYear(text)} />
             </View>
         </View>
     );
 };
+
+
+const styles = StyleSheet.create({
+    input: {
+        height: Platform.OS === 'ios' ? 40 : 45,
+        textAlign: 'center',
+        width: 60,
+        color: Colors.textColor,
+        fontFamily: Fonts.BOLD,
+        fontSize: FontSize.seventeen,
+        borderBottomWidth: 0.5,
+        borderBottomColor: Colors.mainColor,
+    },
+});
 
 
 export default DateCustomInput;
