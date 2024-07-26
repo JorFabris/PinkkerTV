@@ -1,10 +1,11 @@
 import React from 'react';
-import {fireEvent, render, RenderAPI, act} from '@testing-library/react-native';
+import {fireEvent, render, RenderAPI, act, waitFor} from '@testing-library/react-native';
 
 import mockNavigation from '../../mocks/NavigationMocks';
 
 import LoginScreen from '@screens/login/LoginScreen';
 import {getText} from '@getTexts';
+import Screens from '../../../src/Screens';
 
 let screen: RenderAPI;
 
@@ -17,13 +18,15 @@ jest.mock('@react-navigation/native', () => {
     useRoute: () => ({params: {}}),
     useNavigation: () => ({
       navigate: mockedNavigate,
+      replace: mockedNavigate,
     }),
   };
 });
 
 describe('LoginScreen:', () => {
   beforeEach(async () => {
-    screen = render(<LoginScreen navigation={mockNavigation} />);
+    jest.clearAllMocks();
+    screen = render(<LoginScreen />);
   });
 
   it('Shows LoginScreen ok', () => {
@@ -31,47 +34,110 @@ describe('LoginScreen:', () => {
     expect(getByText(getText().login.forgotPassword)).toBeTruthy();
   });
 
-  it('Error when EMAIL is invalid', () => {
+  it('Error when EMAIL is invalid', async () => {
     const {getByTestId} = screen;
+
     const inputEmail = getByTestId('LoginScreen.email');
+    act(() => {
+      fireEvent.changeText(inputEmail, 'error');
+    });
 
-    fireEvent.changeText(inputEmail, 'error');
-
-    expect(getByTestId('SecureInput.error-email')).toBeTruthy();
+    await waitFor(() => {
+      const errorLabel = getByTestId('SecureInput.error-email').children[0];
+      expect(errorLabel).toBe(getText().login.errors.email.valid);
+    });
   });
 
-  it('Error when PASSWORD is invalid', () => {
+  it('Error when PASSWORD is invalid', async () => {
     const {getByTestId} = screen;
 
     const inputPassword = getByTestId('LoginScreen.password');
     act(() => {
       fireEvent.changeText(inputPassword, 'err');
     });
-    expect(getByTestId('SecureInput.error-password')).toBeTruthy();
+
+    await waitFor(() => {
+      const errorLabel = getByTestId(`SecureInput.error-password`).children[0];
+      expect(errorLabel).toBe(getText().login.errors.password.min);
+    });
   });
 
-  it('Success when EMAIL AND PASSWORD are valid', () => {
+  it('Success when EMAIL AND PASSWORD are valid', async () => {
     const {getByTestId} = screen;
-    const inputEmail = getByTestId('LoginScreen.password');
+    const inputEmail = getByTestId('LoginScreen.email');
     const inputPassword = getByTestId('LoginScreen.password');
 
     fireEvent.changeText(inputEmail, 'test@test');
     fireEvent.changeText(inputPassword, 'test123');
 
-    expect(getByTestId('LoginScreen.loginButton')).not.toHaveProperty('disabled');
+    await waitFor(() => {
+      const buttonLogin = getByTestId('LoginScreen.loginButton');
+
+      expect(buttonLogin).toHaveProperty('props.accessibilityState', {
+        disabled: false,
+      });
+    });
   });
 
-  // it('Success when EMAIL AND PASSWORD are valid and redirect to home', () => {
-  //     const { getByTestId } = screen;
-  //     const inputEmail = getByTestId('LoginScreen.password');
-  //     const inputPassword = getByTestId('LoginScreen.password');
-  //     const loginButton = getByTestId('LoginScreen.loginButton');
+  it('Error when EMAIL AND PASSWORD are invalid', async () => {
+    const {getByTestId} = screen;
+    const inputEmail = getByTestId('LoginScreen.email');
+    const inputPassword = getByTestId('LoginScreen.password');
 
+    fireEvent.changeText(inputEmail, 'test');
+    fireEvent.changeText(inputPassword, 'tes');
+
+    await waitFor(() => {
+      const buttonLogin = getByTestId('LoginScreen.loginButton');
+
+      expect(buttonLogin).toHaveProperty('props.accessibilityState', {
+        disabled: true,
+      });
+    });
+  });
+
+  it('Success when EMAIL AND PASSWORD are valid and redirect to home', async () => {
+    const {getByTestId} = screen;
+    const inputEmail = getByTestId('LoginScreen.email');
+    const inputPassword = getByTestId('LoginScreen.password');
+    const loginButton = getByTestId('LoginScreen.loginButton');
+
+    act(() => {
+      fireEvent.changeText(inputEmail, 'test@test');
+      fireEvent.changeText(inputPassword, 'test123');
+    });
+    fireEvent.press(loginButton);
+
+    await waitFor(() => {
+      expect(mockNavigation.replace).toHaveBeenCalledWith(Screens.Stack.WatchNavigation);
+    });
+  });
+
+  it('Navigates to register', async () => {
+    const {getByTestId} = screen;
+    const registerButton = getByTestId('LoginScreen.registerButton');
+
+    await waitFor(() => {
+      fireEvent.press(registerButton);
+      expect(mockNavigation.replace).toHaveBeenCalledWith(Screens.Stack.RegisterScreen);
+    });
+  });
+
+  // it('', async () => {
+  //   const {getByTestId} = screen;
+  //   const inputEmail = getByTestId('LoginScreen.email');
+  //   const inputPassword = getByTestId('LoginScreen.password');
+
+  //   act(() => {
   //     fireEvent.changeText(inputEmail, 'test@test');
   //     fireEvent.changeText(inputPassword, 'test123');
+  //   });
 
+  //   await waitFor(() => {
+  //     const loginButton = getByTestId('LoginScreen.loginButton');
   //     fireEvent.press(loginButton);
+  //   });
 
-  //     expect(mockedNavigate).toHaveBeenCalledWith('WatchNavigation');
+  //   expect(mockNavigation.replace).toHaveBeenCalledWith(Screens.Stack.WatchNavigation);
   // });
 });
