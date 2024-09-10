@@ -1,6 +1,6 @@
 {
   "name": "PinkkerTV",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "postinstall": "npx patch-package",
@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
+    "android:build-release": "cd android && ./gradlew clean && ./gradlew bundleRelease",
     "ios:clean": "cd ios && rm -rf Pods && pod install && cd ..",
     "android:clean": "cd android && ./gradlew clean && cd ..",
     "detox:build-ios": "detox build --configuration ios.sim.debug",

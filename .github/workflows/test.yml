@@ -16,6 +16,6 @@ jobs:
         with:
           node-version: 19.9
       - name: 'Install Dependencies'
-        run: 'npm install'
+        run: 'npm install --legacy-peer-deps'
       - name: 'Running TESTS'
         run: 'npm run test'
