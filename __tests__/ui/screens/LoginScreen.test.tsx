@@ -1,8 +1,5 @@
 import React from 'react';
 import {fireEvent, render, RenderAPI, act, waitFor} from '@testing-library/react-native';
-
-import mockNavigation from '../../mocks/NavigationMocks';
-
 import LoginScreen from '@screens/login/LoginScreen';
 import {getText} from '@getTexts';
 import Screens from '../../../src/Screens';
@@ -104,12 +101,12 @@ describe('LoginScreen:', () => {
 
     act(() => {
       fireEvent.changeText(inputEmail, 'test@test');
-      fireEvent.changeText(inputPassword, 'test123');
+      fireEvent.changeText(inputPassword, 'test12356');
     });
     fireEvent.press(loginButton);
 
     await waitFor(() => {
-      expect(mockNavigation.replace).toHaveBeenCalledWith(Screens.Stack.WatchNavigation);
+      expect(mockedNavigate).toHaveBeenCalledWith(Screens.Stack.WatchNavigation);
     });
   });
 
@@ -117,27 +114,8 @@ describe('LoginScreen:', () => {
     const {getByTestId} = screen;
     const registerButton = getByTestId('LoginScreen.registerButton');
 
-    await waitFor(() => {
-      fireEvent.press(registerButton);
-      expect(mockNavigation.replace).toHaveBeenCalledWith(Screens.Stack.RegisterScreen);
-    });
+    fireEvent.press(registerButton);
+
+    expect(mockedNavigate).toHaveBeenCalledWith(Screens.Stack.RegisterScreen);
   });
-
-  // it('', async () => {
-  //   const {getByTestId} = screen;
-  //   const inputEmail = getByTestId('LoginScreen.email');
-  //   const inputPassword = getByTestId('LoginScreen.password');
-
-  //   act(() => {
-  //     fireEvent.changeText(inputEmail, 'test@test');
-  //     fireEvent.changeText(inputPassword, 'test123');
-  //   });
-
-  //   await waitFor(() => {
-  //     const loginButton = getByTestId('LoginScreen.loginButton');
-  //     fireEvent.press(loginButton);
-  //   });
-
-  //   expect(mockNavigation.replace).toHaveBeenCalledWith(Screens.Stack.WatchNavigation);
-  // });
 });
