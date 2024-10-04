@@ -38,7 +38,7 @@ module.exports = {
     simulator: {
       type: 'ios.simulator',
       device: {
-        type: 'iPhone X'
+        type: 'iPhone 15 Pro'
       }
     },
     attached: {

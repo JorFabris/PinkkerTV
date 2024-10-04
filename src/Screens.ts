@@ -17,5 +17,6 @@ export default {
         NotificationsScreen: 'NotificationsScreen',
         InboxScreen: 'InboxScreen',
         GoLiveNavigation: 'GoLiveNavigation',
+        StreamScreen: 'StreamScreen',
     },
 };

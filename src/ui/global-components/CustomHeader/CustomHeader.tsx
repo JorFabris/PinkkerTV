@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, StatusBar, View, StatusBarStyle } from 'react-native';
-import { Colors } from '../../../assets/Colors';
+import React, {useEffect} from 'react';
+import {SafeAreaView, StatusBar, View, StatusBarStyle} from 'react-native';
+import {Colors} from '../../../assets/Colors';
 import RootStore from '../../../RootStore';
-import { Dimensions } from 'react-native';
-import { Platform } from 'react-native';
-import { StyleSheet } from 'react-native';
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 55 : 28;
+import {Dimensions} from 'react-native';
+import {Platform} from 'react-native';
+import {StyleSheet} from 'react-native';
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 59 : 28;
 const screen = Dimensions.get('screen');
 
 interface IProps {
@@ -16,22 +16,17 @@ interface IProps {
   endSlot?: any;
 }
 
-const CustomHeader = ({ title, backgroundColor, endSlot, startSlot }: IProps) => {
-  useEffect(() => { }, []);
+const CustomHeader = ({title, backgroundColor, endSlot, startSlot}: IProps) => {
+  useEffect(() => {}, []);
 
   return (
     <>
-      <View
-        style={[styles.statusBar, { backgroundColor: Colors.componentsColor }]}>
-        <StatusBar
-          translucent
-          barStyle={Colors.statusBar as StatusBarStyle}
-          backgroundColor={Colors.componentsColor}
-        />
+      <View style={[styles.statusBar, {backgroundColor: Colors.componentsColor}]}>
+        <StatusBar translucent barStyle={Colors.statusBar as StatusBarStyle} backgroundColor={Colors.componentsColor} />
       </View>
       <SafeAreaView>
-        <View style={{ backgroundColor }}>
-          <View style={[styles.header, { backgroundColor }]}>
+        <View style={{backgroundColor}}>
+          <View style={[styles.header, {backgroundColor}]}>
             {startSlot && startSlot}
             {endSlot && endSlot}
           </View>
@@ -41,10 +36,7 @@ const CustomHeader = ({ title, backgroundColor, endSlot, startSlot }: IProps) =>
           style={{
             width: '100%',
             height: 2,
-            backgroundColor:
-              RootStore.app.theme === 'DARK'
-                ? Colors.componentsColor
-                : 'rgba(0, 0, 0, 0.03)',
+            backgroundColor: RootStore.app.theme === 'DARK' ? Colors.componentsColor : 'rgba(0, 0, 0, 0.03)',
             shadowColor: '#000',
             shadowOffset: {
               width: 0,
