@@ -84,6 +84,13 @@ export default {
       title: 'Notificaciones',
       emptyState: 'No tenes notificaciones todavía',
     },
+    stream: {
+      giftASub: 'Regalar una sub',
+      following: 'Siguiendo',
+      notifications: 'Notificaciones',
+      subscribed: 'Subscrito',
+      sendAMessage: 'Enviar un mensaje',
+    },
   },
 
   goLive: {

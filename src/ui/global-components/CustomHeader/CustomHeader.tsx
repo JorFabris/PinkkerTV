@@ -5,7 +5,7 @@ import RootStore from '../../../RootStore';
 import {Dimensions} from 'react-native';
 import {Platform} from 'react-native';
 import {StyleSheet} from 'react-native';
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 59 : 28;
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 65 : 28;
 const screen = Dimensions.get('screen');
 
 interface IProps {

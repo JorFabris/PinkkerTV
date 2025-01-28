@@ -48,6 +48,19 @@ const StackNavigation = () => {
     );
   };
 
+  const StreamHeader = () => {
+    return (
+      <CustomHeader
+        backgroundColor={Colors.componentsColor}
+        startSlot={
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Icon name="chevron-left" size={25} color={Colors.textColor} />
+          </TouchableOpacity>
+        }
+      />
+    );
+  };
+
   const RegisterHeader = () => {
     return (
       <CustomHeader
@@ -106,7 +119,7 @@ const StackNavigation = () => {
         name={Screens.Stack.NotificationsScreen}
         component={NotificationsScreen}
       />
-      <Stack.Screen name={Screens.Stack.StreamScreen} component={StreamScreen} />
+      <Stack.Screen options={{header: () => <StreamHeader />}} name={Screens.Stack.StreamScreen} component={StreamScreen} />
 
       <Stack.Screen
         options={{
